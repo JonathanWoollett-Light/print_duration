@@ -1,4 +1,14 @@
-/// Ranges hh:mm:ss:ms:us:ns (hour:min:sec:milli:micro:nano)
+//! An ultra-simple library with a single function for simple duration printing.
+
+
+/// Prints duration in form `hour:min:sec:milli:micro:nano`.
+/// ```
+/// use print_duration::print_duration;
+/// let duration = std::time::Duration::from_nanos(2212123443);
+/// assert_eq!(print_duration(duration, 0..6), "00:00:02:212:123:443");
+/// assert_eq!(print_duration(duration, 2..6), "02:212:123:443");
+/// assert_eq!(print_duration(duration, 2..4), "02:212");
+/// ```
 pub fn print_duration(duration: std::time::Duration, range: std::ops::Range<usize>) -> String {
     assert!(
         range.end < 7,
